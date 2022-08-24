@@ -64,6 +64,7 @@ export class Player {
     setState(state, speed){
         this.currentState = this.states[state];
         this.game.speed = this.game.maxSpeed * speed;
+        /* console.log(this.game.speed); */
         this.currentState.enter(); 
     }
     checkCollision(){
