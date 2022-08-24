@@ -52,7 +52,7 @@ export class Running extends State {
     }
     handleInput(input){
         // draw partciles while Running
-        this.game.particles.push(new Dust(this.game, this.game.player.x, this.player.y));
+        this.game.particles.push(new Dust(this.game, this.game.player.x, this.game.player.y));
         //   ^^   ^^
         if (input.includes('s')){
             this.game.player.setState(states.SITTING, 0);
