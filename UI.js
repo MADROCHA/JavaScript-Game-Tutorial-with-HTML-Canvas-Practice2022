@@ -9,7 +9,40 @@ export class UI {
     context.textAlign = 'left';
     context.fillStyle = this.fontColor;
     // SCORE
+    context.fillStyle = 'black';
     context.fillText('Score: ' + this.game.score, 20, 50);
+    // TIMER
+    context.font = this.fontSize * 0.8 + 'px ' + this.fontFamily;
+    context.fillText('Time: ' + (this.game.time * 0.001).toFixed(1), 20 ,80);
+    // GAME OVER MESSAGES
+    if (this.game.gameOver){
+        // 1st message
+        // black message
+        if (this.game.score > 5){
+            context.fillStyle = 'azure';
+            context.textAlign = 'center';
+            context.font = this.fontSize * 1.5 + 'px ' + this.fontFamily;
+            context.fillText('STAGE', this.game.width * 0.5, this.game.height * 0.5 - 20 );
+            // white message offset
+            // 2nd message
+            context.fillStyle = 'black';
+            context.textAlign = 'center';
+            context.font = this.fontSize * 0.8 + 'px ' + this.fontFamily;
+            context.fillText("CLEARED", this.game.width * 0.5, this.game.height * 0.5 + 10);
+            
+        } else {
+            context.fillStyle = 'azure';
+            context.textAlign = 'center';
+            context.font = this.fontSize * 2 + 'px ' + this.fontFamily;
+            context.fillText('GAME OVER', this.game.width * 0.5, this.game.height * 0.5 - 20 );
+            // white message offset
+            // 2nd message
+            context.fillStyle = 'black';
+            context.textAlign = 'center';
+            context.font = this.fontSize * 0.8 + 'px ' + this.fontFamily;
+            context.fillText('Try Again?', this.game.width * 0.5, this.game.height * 0.5 + 10);
+        }
+    }
 
     }
 }
