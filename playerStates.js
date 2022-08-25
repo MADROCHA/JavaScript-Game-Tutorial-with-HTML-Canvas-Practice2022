@@ -127,7 +127,7 @@ export class Rolling extends State {
             this.game.player.setState(states.JUMPFALLING, 1);
         } else if (input.includes('m') && input.includes('w') && this.game.player.onGround()){
             this.game.player.vy -= 27;
-        } else if (input.includes('s') && this.game.player.onGround()){
+        } else if (input.includes('s') && !this.game.player.onGround()){
             this.game.player.setState(states.DIVING, 0);
         }
 

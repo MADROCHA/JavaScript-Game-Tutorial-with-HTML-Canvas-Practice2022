@@ -92,6 +92,7 @@ export class Player {
                     this.game.floatingMessages.push(new FloatingMessage('+1', enemy.x, enemy.y, 150, 50));
                     //  other collisions set player state to Hit.
                 } else {
+                    //  Hit and unable to 'move' due to playerState#.
                     this.setState(6, 0);
                     this.game.score -= 3;
                     this.game.lives--;
