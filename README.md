@@ -5,24 +5,32 @@
 Practice to build a 2D side scroll game using html, css and javascript.
 
 ## Controls
+- Directions
 
-JUMP  
+UP  
 'W' 
 
 LEFT  
 'A' 
 
+DOWN   
+'S'
+
 RIGHT       
-'D' 
+'D'
+
+- Moves
+
+ROLL   
+'M'
 
 ## _Notes 1.0_
  - To retry you'll need to reload.
  - State Hit doesn't provide Iframes.
  - States need more study so they are in progress.
  - State Rolling its a dominant feature which needs some rework.
+ - Caps lock key disable direction controls.
  - Collision hitboxes aren't perfect fit to strokes & circles around characters on screen.
-
-
 
 This is practice was made thanks to [Franks laboratory](https://twitter.com/code_laboratory).
 
@@ -51,7 +59,7 @@ HTML
 
 leave a space after this to add the following repository link
 
-`$ ` 
+`$ https://github.com/MADROCHA/JavaScript-Game-Tutorial-with-HTML-Canvas-Practice2022.git` 
 
  ## Project Media
 
