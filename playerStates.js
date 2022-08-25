@@ -154,7 +154,28 @@ export class Diving extends State {
                 this.game.particles.unshift(new Splash(this.game, this.game.player.x + this.game.player.width * 0.5, this.game.player.y + this.game.player.height))
             }
         } else if (input.includes('m') && this.game.player.onGround()){
-            this.game.player.setState(states.ROLLING, 1);
+            this.game.player.setState(states.ROLLING, 2);
+        }
+    }
+}
+export class Hit extends State {
+    constructor(game){
+        super('HIT', game);
+    }
+    enter(){
+        this.game.player.frameX = 0;
+        this.game.player.maxFrame = 10;
+        this.game.player.frameY = 4;
+        
+        
+    }
+    handleInput(input){
+        
+        // checks player HIT animation frame has run once, then one of those conditions make state change to Running or JumpgFalling. 
+        if (this.game.player.frameX >= 10 && this.game.player.onGround()){
+            this.game.player.setState(states.RUNNING, 1);
+        } else if (this.game.player.frameX >= 10 && !this.game.player.onGround()){
+            this.game.player.setState(states.JUMPFALLING, 1);
         }
     }
 }
