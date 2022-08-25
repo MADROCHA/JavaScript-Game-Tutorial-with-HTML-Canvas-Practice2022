@@ -1,4 +1,5 @@
 import { Sitting, Running, Jumping, JumpFalling, Rolling, Diving, Hit } from "./playerStates.js";
+import { CollisionAnimation } from './collisionAnimation.js'
 
 export class Player {
     constructor(game){
@@ -81,8 +82,11 @@ export class Player {
                 
             ){      
                 enemy.markedForDeletion = true;
+                this.game.collisions.push(new CollisionAnimation(this.game, enemy.x + enemy.width * 0.5, enemy.y + enemy.height * 0.5));
+                //  if collision happened while Rolling or Diving, score +1.
                 if (this.currentState === this.states[4] || this.currentState === this.states[5] ){
                     this.game.score++;
+                //  other collisions set player state to Hit.
                 } else {
                     this.setState(6, 0);
                 }
