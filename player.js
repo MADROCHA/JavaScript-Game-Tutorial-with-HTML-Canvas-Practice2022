@@ -31,8 +31,10 @@ export class Player {
         this.currentState.handleInput(input);
         // HORIZONTAL MOVEMENT  
         this.x += this.speed;
-        if (input.includes('d')) this.speed = this.maxSpeed;
-        else if (input.includes('a')) this.speed = -this.maxSpeed;
+        // note:  && this.currentState !== this.states[6]
+        // Disables horizontal speed while HIT
+        if (input.includes('d') && this.currentState !== this.states[6]) this.speed = this.maxSpeed;
+        else if (input.includes('a') && this.currentState !== this.states[6]) this.speed = -this.maxSpeed;
         else this.speed = 0;
         // HORIZONTAL BOUNDARIES  
         if (this.x < 0) this.x = 0;

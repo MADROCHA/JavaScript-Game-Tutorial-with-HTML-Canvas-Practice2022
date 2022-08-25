@@ -54,7 +54,8 @@ export class Running extends State {
         // draw DUST partciles while Running
         this.game.particles.unshift(new Dust(this.game, this.game.player.x + this.game.player.width * 0.4, this.game.player.y + this.game.player.height));
         //   ^^   ^^
-        if (input.includes('s')){
+        //note.mad_1.1_Line58: && !input.includes('a') && !input.includes('d')
+        if (input.includes('s') && !input.includes('a') && !input.includes('d')){
             this.game.player.setState(states.SITTING, 0);
         } else if (input.includes('w')){
             this.game.player.setState(states.JUMPING, 1)
@@ -126,7 +127,7 @@ export class Rolling extends State {
             this.game.player.setState(states.JUMPFALLING, 1);
         } else if (input.includes('m') && input.includes('w') && this.game.player.onGround()){
             this.game.player.vy -= 27;
-        } else if (input.includes('s')){
+        } else if (input.includes('s') && this.game.player.onGround()){
             this.game.player.setState(states.DIVING, 0);
         }
 
