@@ -1,4 +1,4 @@
-import { Dust, Fire} from './particles.js'
+import { Dust, Fire, Splash} from './particles.js'
 
 const states = {
     SITTING: 0,
@@ -80,6 +80,8 @@ export class Jumping extends State {
             this.game.player.setState(states.JUMPFALLING, 1);
         } else if (input.includes('m')){
             this.game.player.setState(states.ROLLING, 2);
+        } else if (input.includes('s')){
+            this.game.player.setState(states.DIVING, 0);
         }
 
     }
@@ -97,6 +99,8 @@ export class JumpFalling extends State {
     handleInput(input){
         if (this.game.player.onGround()){
             this.game.player.setState(states.RUNNING, 1);
+        } else if (input.includes('s')){
+            this.game.player.setState(states.DIVING, 0);
         }
 
     }
@@ -113,16 +117,44 @@ export class Rolling extends State {
         
     }
     handleInput(input){
-         // draw FIRE partciles while Rolling
+        // draw FIRE partciles while Rolling
          this.game.particles.unshift(new Fire(this.game, this.game.player.x + this.game.player.width * 0.5, this.game.player.y + this.game.player.height * 0.5));
-         //   ^^   ^^
+        //   ^^   ^^
         if (!input.includes('m') && this.game.player.onGround()){
             this.game.player.setState(states.RUNNING, 1);
         } else if (!input.includes('m') && !this.game.player.onGround()){
             this.game.player.setState(states.JUMPFALLING, 1);
         } else if (input.includes('m') && input.includes('w') && this.game.player.onGround()){
             this.game.player.vy -= 27;
+        } else if (input.includes('s')){
+            this.game.player.setState(states.DIVING, 0);
         }
 
+    }
+}
+export class Diving extends State {
+    constructor(game){
+        super('DIVING', game);
+    }
+    enter(){
+        this.game.player.frameX = 0;
+        this.game.player.maxFrame = 6;
+        this.game.player.frameY = 6;
+        this.game.player.vy = 15;
+        
+    }
+    handleInput(input){
+        // draw FIRE particles while Rolling
+        this.game.particles.unshift(new Fire(this.game, this.game.player.x + this.game.player.width * 0.5, this.game.player.y + this.game.player.height * 0.5));
+        // checks player onGround value if its true, then state changes to Running 
+        if (this.game.player.onGround()){
+            this.game.player.setState(states.RUNNING, 1);
+            //  draw SPLASH particles on change state from DIVING to RUNNING
+            for (let i = 0; i < 30; i++){
+                this.game.particles.unshift(new Splash(this.game, this.game.player.x + this.game.player.width * 0.5, this.game.player.y + this.game.player.height))
+            }
+        } else if (input.includes('m') && this.game.player.onGround()){
+            this.game.player.setState(states.ROLLING, 1);
+        }
     }
 }
