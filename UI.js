@@ -30,7 +30,7 @@ export class UI {
     if (this.game.gameOver){
         // 1st message
         // black message
-        if (this.game.score > 5){
+        if (this.game.score > this.game.winningScore){
             context.fillStyle = 'azure';
             context.textAlign = 'center';
             context.font = this.fontSize * 1.5 + 'px ' + this.fontFamily;

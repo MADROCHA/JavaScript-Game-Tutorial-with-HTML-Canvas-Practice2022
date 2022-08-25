@@ -90,9 +90,10 @@ export class Player {
                 if (this.currentState === this.states[4] || this.currentState === this.states[5] ){
                     this.game.score++;
                     this.game.floatingMessages.push(new FloatingMessage('+1', enemy.x, enemy.y, 150, 50));
-                //  other collisions set player state to Hit.
+                    //  other collisions set player state to Hit.
                 } else {
                     this.setState(6, 0);
+                    this.game.score -= 3;
                     this.game.lives--;
                     if (this.game.lives <= 0) this.game.gameOver = true;
                 }
