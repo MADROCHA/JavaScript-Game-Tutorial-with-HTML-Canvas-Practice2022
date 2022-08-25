@@ -12,6 +12,9 @@
     transform: translate(-50%, -50%);
     max-width: 100%;
     max-height: 100%;
+    font-family: 'Play', sans-serif;
+
+
 }
 
 #player, #layer1, #layer2, #layer3, #layer4, #layer5, #enemy_fly, #enemy_plant, #enemy_spider, #fire, #collisionAnimation {

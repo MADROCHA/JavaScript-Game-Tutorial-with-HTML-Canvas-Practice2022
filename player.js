@@ -91,6 +91,8 @@ export class Player {
                 //  other collisions set player state to Hit.
                 } else {
                     this.setState(6, 0);
+                    this.game.lives--;
+                    if (this.game.lives <= 0) this.game.gameOver = true;
                 }
                 
                 // COLLISION DETECTED
