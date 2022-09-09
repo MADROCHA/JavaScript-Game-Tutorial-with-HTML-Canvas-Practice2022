@@ -67,7 +67,7 @@ _
 
  ## Deploy
 
- _
+https://java-script-game-tutorial-with-html-canvas-practice2022.vercel.app/
 
  ## Acknowledgments
 
